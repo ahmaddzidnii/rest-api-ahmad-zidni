@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model kodeposid {
+  kode_wilayah String  @id
+  kode_pos     Int?    @map(" kode_pos")
+  provinsi     String? @map(" provinsi")
+  kota         String? @map(" kota")
+  kecamatan    String? @map(" kecamatan")
+  kelurahan    String? @map(" kelurahan")
+  latitude_    Float?  @map("  latitude ")
+  longitude_   Float?  @map("  longitude ")
+  elevasi      String? @map(" elevasi")
+}
