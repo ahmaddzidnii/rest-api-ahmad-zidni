@@ -7,15 +7,47 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model cities {
+  city_id   Int     @id
+  city_name String?
+  prov_id   Int?
+}
+
+model districts {
+  dis_id   Int     @id
+  dis_name String?
+  city_id  Int?
+}
+
+model postalcode {
+  postal_id   Int  @id
+  subdis_id   Int?
+  dis_id      Int?
+  city_id     Int?
+  prov_id     Int?
+  postal_code Int?
+}
+
+model provinces {
+  prov_id    Int     @id
+  prov_name  String?
+  locationid Int?    @db.SmallInt
+  status     Int?
+}
+
+model subdistricts {
+  subdis_id   Int     @id
+  subdis_name String?
+  dis_id      Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
-model kodeposid {
-  kode_wilayah String  @id
-  kode_pos     Int?    @map(" kode_pos")
-  provinsi     String? @map(" provinsi")
-  kota         String? @map(" kota")
-  kecamatan    String? @map(" kecamatan")
-  kelurahan    String? @map(" kelurahan")
-  latitude_    Float?  @map("  latitude ")
-  longitude_   Float?  @map("  longitude ")
-  elevasi      String? @map(" elevasi")
+model postalcodeall {
+  province    String @id
+  city        String?
+  district    String?
+  subdistrict String?
+  postal_code Int?
+
 }
