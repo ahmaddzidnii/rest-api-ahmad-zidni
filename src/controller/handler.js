@@ -1,30 +1,8 @@
 import { prisma } from "../lib/prisma/db.js";
 
-export const HandleGetCities = async (req, res) => {
-  const { kodepos } = req.query;
-  const data = await prisma.districts.findMany({
-    where: {
-      city_id: 210,
-    },
-  });
-  return res.json({
-    data,
-  });
-};
+
 
 export const HandleGetPostalCode = async (req, res) => {
-  const { kodepos } = req.query;
-  const data = await prisma.postalcodeall.findMany({
-    where: {
-      postal_code: 55281,
-    },
-  });
-  return res.json({
-    data,
-  });
-};
-
-export const HandleGetLocationByPostalCode = async (req, res) => {
   const { postalCode } = req.query;
 
   //cek postalcode jika kosong return bad request
@@ -85,3 +63,4 @@ export const HandleGetLocationByPostalCode = async (req, res) => {
     postal_code,
   });
 };
+
