@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs_api=self.webpackChunkdocs_api||[]).push([[2415],{2373:e=>{e.exports=JSON.parse('{"permalink":"/rest-api-kode-pos-id/blog/tags/hello","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

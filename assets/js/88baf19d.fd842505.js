@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs_api=self.webpackChunkdocs_api||[]).push([[346],{7235:s=>{s.exports=JSON.parse('{"permalink":"/rest-api-kode-pos-id/blog/tags/docusaurus","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

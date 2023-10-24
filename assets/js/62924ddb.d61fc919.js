@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs_api=self.webpackChunkdocs_api||[]).push([[1188],{2738:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/rest-api-kode-pos-id/blog/tags/facebook","allTagsPath":"/rest-api-kode-pos-id/blog/tags","count":1}')}}]);
