@@ -1,0 +1,8 @@
+{
+  "label": "API Kode Pos",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Untuk mengambil data kodepos di semua wilayah negara indoneia dari API"
+  }
+}
