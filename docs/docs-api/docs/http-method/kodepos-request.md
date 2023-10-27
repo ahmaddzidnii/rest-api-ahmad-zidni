@@ -25,16 +25,65 @@ Succsess :
 
 ```json
 {
-  "post": "pp"
+  {
+    "pagination": {
+        "total_page": 813,
+        "has_prev_page": false,
+        "has_next_page": true,
+        "current_page": 1,
+        "items": {
+            "count": 100,
+            "total": 81266,
+            "per_page": 100
+        }
+    },
+    "data": [
+        {
+            "province": "Bali",
+            "city": "Badung",
+            "district": "Kuta",
+            "subdistrict": "Tuban",
+            "postal_code": 80361
+        },
+        {
+            "province": "Bali",
+            "city": "Badung",
+            "district": "Kuta Utara",
+            "subdistrict": "Tibubeneng",
+            "postal_code": 80361
+        },
+        {
+            "province": "Bali",
+            "city": "Badung",
+            "district": "Kuta Selatan",
+            "subdistrict": "Tanjung Benoa",
+            "postal_code": 80361
+        },
+    ]
+}
 }
 ```
 
 Gagal :
 
+- Jika query limit kurang dari 50 maka server akan merespon status code 400(Bad Request) dengan message:
+
+````json
+
+  { "message": "Limit tidak boleh kurang dari 50"}
+
+- Jika query page yang dikirim melebihi jumlah page pada database maka server akan merespon status code 400(Bad Request) dengan message:
+
 ```json
-{
-  "post": "pp"
-}
+
+ {"message": "Page yang diminta melebihi page pada data pada database!"}
+
+````
+
+- Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500(Internal Server Error) dengan message:
+
+```json
+{ "message": "Internal server error!" }
 ```
 
 <!--
