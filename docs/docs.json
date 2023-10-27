@@ -1,0 +1,93 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "REST API KODE POS ID",
+    "version": "1.0",
+    "description": "Open Api untuk mendapatkan data kode pos di seluruh wilayah indonesia.",
+    "contact": { "name": "Ahmad Zidni", "email": "zdngaming312@gmail.com" },
+    "license": { "name": "APACHE 2.0", "url": "https://www.apache.org/licenses/LICENSE-2.0" }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:2000"
+    }
+  ],
+  "externalDocs": { "description": "Site", "url": "https://ahmadzidni.site" },
+  "paths": {
+    "/postalcode/all": {
+      "get": {
+        "description": "Mengambil data semua kode pos",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "total_page": {
+                          "type": "number"
+                        },
+                        "has_prev_page": {
+                          "type": "boolean"
+                        },
+                        "has_next_page": {
+                          "type": "boolean"
+                        },
+                        "current_page": {
+                          "type": "number"
+                        },
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "count": {
+                              "type": "number"
+                            },
+                            "total": {
+                              "type": "number"
+                            },
+                            "per_page": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "limit",
+          "description": "Mendapatkan data dengan batas jumlah tertentu minimal 50 ",
+          "in": "query",
+          "required": false,
+          "allowEmptyValue": true,
+          "schema": {
+            "type": "number",
+            "default": 100,
+            "minimum": 50
+          }
+        },
+        {
+          "name": "page",
+          "description": "mendapatkan data sesuai halaman",
+          "in": "query",
+          "required": false,
+          "allowEmptyValue": true,
+          "schema": {
+            "type": "number",
+            "default": 1
+          }
+        }
+      ]
+    }
+  }
+}

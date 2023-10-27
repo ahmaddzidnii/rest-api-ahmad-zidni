@@ -2,13 +2,15 @@
 sidebar_position: 1
 ---
 
-# Get All Kode Pos
+# Mendapatkan Semua Data Kode Pos
 
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
  /postalcode/all
 ```
+
+## Params
 
 Query Params (Opsional):
 
@@ -19,9 +21,9 @@ Default limit: 100 , page: 1
 
 > **Peringatan:** Untuk query limit minimmal adalah 50!
 
-# Example Response
+## Example Response
 
-Succsess :
+# Succsess :
 
 ```json
 {
@@ -64,26 +66,30 @@ Succsess :
 }
 ```
 
-Gagal :
+# Gagal :
 
 - Jika query limit kurang dari 50 maka server akan merespon status code 400(Bad Request) dengan message:
 
-````json
-
-  { "message": "Limit tidak boleh kurang dari 50"}
+```json
+{
+  "message": "Limit tidak boleh kurang dari 50"
+}
+```
 
 - Jika query page yang dikirim melebihi jumlah page pada database maka server akan merespon status code 400(Bad Request) dengan message:
 
 ```json
-
- {"message": "Page yang diminta melebihi page pada data pada database!"}
-
-````
+{
+  "message": "Page yang diminta melebihi page pada data pada database!"
+}
+```
 
 - Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500(Internal Server Error) dengan message:
 
 ```json
-{ "message": "Internal server error!" }
+{
+  "message": "Internal server error!"
+}
 ```
 
 <!--
