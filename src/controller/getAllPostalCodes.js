@@ -19,6 +19,13 @@ export const HandleGetAllPostalCodes = async (req, res) => {
     // Menghitung jumlah halaman
     const totalPages = Math.ceil(totalData / pageSize);
 
+    // Mengecek jika page yang dikirim client lebih dari yang ada di data base
+    if (page > totalPages) {
+      return res.status(400).json({
+        message: "Page yang diminta melebihi page pada data pada database!",
+      });
+    }
+
     //   Handle dimana saat client mengirim curent page lebih dari page size
     if (currentPage > totalPages) {
       return res.status(400).json({
