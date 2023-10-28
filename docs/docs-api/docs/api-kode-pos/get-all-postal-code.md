@@ -7,12 +7,12 @@ sidebar_position: 1
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- /postalcode/all
+  https://api.ahmadzidni.site/postalcode/all
 ```
 
 ## Params
 
-Query Params (Opsional):
+Query Params **(Opsional)**:
 
 - `limit` type **integer**
 - `page` type **integer**
@@ -21,11 +21,17 @@ Default limit: 100 , page: 1
 
 > **Peringatan:** Untuk query limit minimmal adalah 50!
 
+## Example Request
+
+```txt title="GET"
+ api.ahmadzidni.site/postalcode/all
+```
+
 ## Example Response
 
 # Succsess :
 
-```json
+```json title="200"
 {
   {
     "pagination": {
@@ -68,25 +74,25 @@ Default limit: 100 , page: 1
 
 # Gagal :
 
-- Jika query limit kurang dari 50 maka server akan merespon status code 400(Bad Request) dengan message:
+- Jika query limit kurang dari 50 maka server akan merespon status code 400 (Bad Request) dengan message:
 
-```json
+```json title="400"
 {
   "message": "Limit tidak boleh kurang dari 50"
 }
 ```
 
-- Jika query page yang dikirim melebihi jumlah page pada database maka server akan merespon status code 400(Bad Request) dengan message:
+- Jika query page yang dikirim melebihi jumlah page pada database maka server akan merespon status code 400 (Bad Request) dengan message:
 
-```json
+```json title="400"
 {
   "message": "Page yang diminta melebihi page pada data pada database!"
 }
 ```
 
-- Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500(Internal Server Error) dengan message:
+- Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500 (Internal Server Error) dengan message:
 
-```json
+```json title="500"
 {
   "message": "Internal server error!"
 }

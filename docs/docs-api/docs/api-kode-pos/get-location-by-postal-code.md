@@ -7,20 +7,26 @@ sidebar_position: 2
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- /postalcode/{kode-pos}/location
+ api.ahmadzidni.site/postalcode/{kode-pos}/location
 ```
 
 ## Params
 
-Params (Required):
+Params **(Required)**:
 
 - `kode-pos` type **integer**
+
+## Example Request
+
+```txt title="GET"
+ api.ahmadzidni.site/postalcode/55282/location
+```
 
 ## Example Response
 
 # Succsess :
 
-```json
+```json title="200"
 {
   "postalCode": "55283",
   "data": {
@@ -37,7 +43,7 @@ Params (Required):
 
 - Jika data tidak ditemukan maka server akan merespon status code 404 (Not Found) dengan message:
 
-```json
+```json title="404"
 {
   "message": "lokasi tidak ditemukan"
 }
@@ -45,7 +51,7 @@ Params (Required):
 
 - Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500 (Internal Server Error) dengan message:
 
-```json
+```json title="500"
 {
   "message": "Internal server error!"
 }
