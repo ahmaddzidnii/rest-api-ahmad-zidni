@@ -2,11 +2,12 @@ import { prisma } from "../lib/prisma/db.js";
 
 export const HandleGetAllPostalCodes = async (req, res) => {
   const { page, limit } = req.query;
-  const pageSize = parseInt(limit) || 100; // Jumlah data per halaman
+
+  const itemsPerPage = parseInt(limit) || 100; // Jumlah data per halaman
   const currentPage = parseInt(page) || 1; // Halaman saat ini
 
   //   Handle dimana client mengirim limit dibawah 50
-  if (pageSize < 50) {
+  if (itemsPerPage < 50) {
     return res.status(400).json({
       message: "Limit tidak boleh kurang dari 50",
     });
@@ -14,10 +15,14 @@ export const HandleGetAllPostalCodes = async (req, res) => {
 
   try {
     // Menghitung jumlah total data
-    const totalData = await prisma.postalcodeall.count();
+    const totalItems = await prisma.postalcodeall.count();
 
     // Menghitung jumlah halaman
-    const totalPages = Math.ceil(totalData / pageSize);
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    // Menghitung jumlah item yang harus ditampilkan dalam halaman terakhir
+    const itemsInLastPage = totalItems % itemsPerPage;
+    const count = currentPage === totalPages ? itemsInLastPage : itemsPerPage;
 
     // Mengecek jika page yang dikirim client lebih dari yang ada di data base
     if (page > totalPages) {
@@ -34,13 +39,12 @@ export const HandleGetAllPostalCodes = async (req, res) => {
     }
 
     // Menghitung indeks mulai dan selesai untuk data pada halaman saat ini
-    const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = Math.min(startIndex + pageSize, totalData);
+    const startIndex = (currentPage - 1) * itemsPerPage;
 
     // Mengambil data dalam jumlah tertentu
     const data = await prisma.postalcodeall.findMany({
       skip: startIndex,
-      take: pageSize,
+      take: itemsPerPage,
     });
 
     // Kondisi dimana tidak memiliki halaman selanjutnya
@@ -56,9 +60,9 @@ export const HandleGetAllPostalCodes = async (req, res) => {
         has_next_page: hasNextPage,
         current_page: currentPage,
         items: {
-          count: pageSize,
-          total: totalData,
-          per_page: pageSize,
+          count,
+          total: totalItems,
+          per_page: itemsPerPage,
         },
       },
       data,
