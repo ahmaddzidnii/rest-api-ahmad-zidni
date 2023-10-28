@@ -61,6 +61,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
+      metadata: [{ name: "keywords", content: "api, rest api" }],
       image: "img/docusaurus-social-card.jpg",
       navbar: {
         title: "docs.ahmadzidni.site",

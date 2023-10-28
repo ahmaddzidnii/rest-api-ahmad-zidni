@@ -7,7 +7,7 @@ sidebar_position: 2
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- /postalcode/{kode-pos}
+ /postalcode/{kode-pos}/location
 ```
 
 ## Params
@@ -35,23 +35,15 @@ Params (Required):
 
 # Gagal :
 
-- Jika query limit kurang dari 50 maka server akan merespon status code 400(Bad Request) dengan message:
+- Jika data tidak ditemukan maka server akan merespon status code 404 (Not Found) dengan message:
 
 ```json
 {
-  "message": "Limit tidak boleh kurang dari 50"
+  "message": "lokasi tidak ditemukan"
 }
 ```
 
-- Jika query page yang dikirim melebihi jumlah page pada database maka server akan merespon status code 400(Bad Request) dengan message:
-
-```json
-{
-  "message": "Page yang diminta melebihi page pada data pada database!"
-}
-```
-
-- Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500(Internal Server Error) dengan message:
+- Jika terjadi kesalahan pada proses query pada server maka server akan merespon status code 500 (Internal Server Error) dengan message:
 
 ```json
 {
