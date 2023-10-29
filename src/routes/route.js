@@ -10,8 +10,9 @@ const router = express.Router();
 const __dirname = path.dirname("view");
 
 router.get("/", (req, res) => {
-  const filePath = path.join(__dirname, "view", "index.html");
-  res.sendFile(filePath);
+  res.redirect("https://docsapi.ahmadzidni.site");
+  // const filePath = path.join(__dirname, "view", "index.html");
+  // res.sendFile(filePath);
 });
 
 // Endpoint untuk mendapatkan semua data kodepos
