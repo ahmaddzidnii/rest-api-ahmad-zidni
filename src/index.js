@@ -15,6 +15,9 @@ const app = express();
 // izinkan cors untuk domain yang berbeda
 app.use(cors());
 
+// Mengatur direktori atau path untuk file HTML
+app.use(express.static("./view")); // Contoh: direktori file HTML ada di root direktori aplikasi
+
 // Buat router endpoint REST API
 app.use(router);
 
