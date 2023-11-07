@@ -7,7 +7,7 @@ sidebar_position: 1
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
-  https://api.ahmadzidni.site/postalcode/all
+  https://api.ahmadzidni.site/postalcodes
 ```
 
 ## Params
@@ -24,7 +24,7 @@ Default limit: 100 , page: 1
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcode/all
+ api.ahmadzidni.site/postalcodes
 ```
 
 ## Example Response
@@ -33,42 +33,94 @@ Default limit: 100 , page: 1
 
 ```json title="200"
 {
-  {
-    "pagination": {
-        "total_page": 813,
-        "has_prev_page": false,
-        "has_next_page": true,
-        "current_page": 1,
-        "items": {
-            "count": 100,
-            "total": 81266,
-            "per_page": 100
-        }
-    },
-    "data": [
-        {
-            "province": "Bali",
-            "city": "Badung",
-            "district": "Kuta",
-            "subdistrict": "Tuban",
-            "postal_code": 80361
+    "status": 200,
+    "message": "Get all postal code success!",
+    "data": {
+        "pagination": {
+            "total_page": 813,
+            "has_prev_page": false,
+            "has_next_page": true,
+            "current_page": 1,
+            "items": {
+                "count": 100,
+                "total": 81266,
+                "per_page": 100
+            }
         },
-        {
-            "province": "Bali",
-            "city": "Badung",
-            "district": "Kuta Utara",
-            "subdistrict": "Tibubeneng",
-            "postal_code": 80361
-        },
-        {
-            "province": "Bali",
-            "city": "Badung",
-            "district": "Kuta Selatan",
-            "subdistrict": "Tanjung Benoa",
-            "postal_code": 80361
-        },
-    ]
-}
+        "data": [
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta",
+                "subdistrict": "Tuban",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Utara",
+                "subdistrict": "Tibubeneng",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Selatan",
+                "subdistrict": "Tanjung Benoa",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta",
+                "subdistrict": "Legian",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta",
+                "subdistrict": "Seminyak",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Selatan",
+                "subdistrict": "Pecatu",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta",
+                "subdistrict": "Kuta",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Selatan",
+                "subdistrict": "Kutuh",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Utara",
+                "subdistrict": "Kerobokan Kelod",
+                "postal_code": 80361
+            },
+            {
+                "province": "Bali",
+                "city": "Badung",
+                "district": "Kuta Utara",
+                "subdistrict": "Kerobokan Kaja",
+                "postal_code": 80361
+            },
+            ...
+        ]
+    }
 }
 ```
 

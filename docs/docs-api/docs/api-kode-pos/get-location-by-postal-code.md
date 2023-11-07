@@ -7,7 +7,7 @@ sidebar_position: 2
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- api.ahmadzidni.site/postalcode/{kode-pos}/location
+ api.ahmadzidni.site/postalcode/{kode-pos}
 ```
 
 ## Params
@@ -19,7 +19,8 @@ Params **(Required)**:
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcode/55282/location
+ api.ahmadzidni.site/postalcode/55282
+
 ```
 
 ## Example Response
@@ -28,13 +29,17 @@ Params **(Required)**:
 
 ```json title="200"
 {
-  "postalCode": "55283",
+  "status": 200,
+  "message": "success",
   "data": {
-    "province": "DI Yogyakarta",
-    "city": "Sleman",
-    "district": "Depok",
-    "subdistrict": "Condong Catur",
-    "postal_code": 55283
+    "postal_code_query": "55285",
+    "data": {
+      "province": "DI Yogyakarta",
+      "city": "Sleman",
+      "district": "Mlati",
+      "subdistrict": "Sendangadi",
+      "postal_code": 55285
+    }
   }
 }
 ```

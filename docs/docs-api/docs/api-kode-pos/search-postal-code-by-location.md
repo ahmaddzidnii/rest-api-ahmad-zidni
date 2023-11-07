@@ -7,7 +7,7 @@ sidebar_position: 3
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- /postalcode/search
+ api.ahmadzidni.site/postalcodes/search
 ```
 
 ## Params
@@ -28,7 +28,7 @@ Default limit: 100 , page: 1
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcode/search?query=yogyakarta
+ api.ahmadzidni.site/postalcodes/search?query=yogyakarta
 ```
 
 ## Example Response
@@ -37,87 +37,32 @@ Default limit: 100 , page: 1
 
 ```json title="200"
 {
+  "status": 200,
+  "message": "success",
+  "data": {
     "pagination": {
-        "total_page": 5,
-        "has_prev_page": false,
-        "has_next_page": true,
-        "current_page": 1,
-        "items": {
-            "count": 100,
-            "total": 440,
-            "per_page": 100
-        }
+      "total_page": 1,
+      "has_prev_page": false,
+      "has_next_page": false,
+      "current_page": 1,
+      "items": {
+        "count": 1,
+        "total": 1,
+        "per_page": 1
+      }
     },
-    "query": "yogyakarta",
+    "query_search": "maguwoharjo",
     "data": [
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Piyungan",
-            "subdistrict": "Srimulyo",
-            "postal_code": 55792
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Piyungan",
-            "subdistrict": "Sitimulyo",
-            "postal_code": 55792
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Pleret",
-            "subdistrict": "Wonolelo",
-            "postal_code": 55791
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Pleret",
-            "subdistrict": "Segoroyoso",
-            "postal_code": 55791
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Pleret",
-            "subdistrict": "Wonokromo",
-            "postal_code": 55791
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Pleret",
-            "subdistrict": "Pleret",
-            "postal_code": 55791
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Pleret",
-            "subdistrict": "Bawuran",
-            "postal_code": 55791
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Dlingo",
-            "subdistrict": "Terong",
-            "postal_code": 55783
-        },
-        {
-            "province": "DI Yogyakarta",
-            "city": "Bantul",
-            "district": "Dlingo",
-            "subdistrict": "Temuwuh",
-            "postal_code": 55783
-        },
-
-            ...
+      {
+        "province": "DI Yogyakarta",
+        "city": "Sleman",
+        "district": "Depok",
+        "subdistrict": "Maguwoharjo",
+        "postal_code": 55282
+      }
     ]
+  }
 }
-
 ```
 
 # Gagal :
