@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma/db.js";
+import { sucsessResponse } from "../templates/succsesResponse.js";
 
 export const HandleGetAllPostalCodes = async (req, res) => {
   const { page, limit } = req.query;
@@ -52,8 +53,7 @@ export const HandleGetAllPostalCodes = async (req, res) => {
 
     // Kondisi dimana tidak memiliki halaman sebelumnya
     const hasPrevPage = currentPage === 1 ? false : true;
-
-    return res.json({
+    const responseData = {
       pagination: {
         total_page: totalPages,
         has_prev_page: hasPrevPage,
@@ -66,7 +66,9 @@ export const HandleGetAllPostalCodes = async (req, res) => {
         },
       },
       data,
-    });
+    };
+
+    return res.json(sucsessResponse(200, "Get all postal code success!", responseData));
   } catch (error) {
     // Handle server error
     return res.status(500).json({

@@ -16,10 +16,10 @@ router.get("/", (req, res) => {
 });
 
 // Endpoint untuk mendapatkan semua data kodepos
-router.get("/postalcode/all", HandleGetAllPostalCodes);
+router.get("/postalcodes", HandleGetAllPostalCodes);
 
-router.get("/postalcode/:postalCode/location", HandleGetLocationByPostalCode);
+router.get("/postalcode/:postalCode", HandleGetLocationByPostalCode);
 
-router.get("/postalcode/search", HandleSearchPostalCodeByLocation);
+router.get("/postalcodes/search", HandleSearchPostalCodeByLocation);
 
 export default router;

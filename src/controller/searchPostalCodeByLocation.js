@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma/db.js";
+import { sucsessResponse } from "../templates/succsesResponse.js";
 
 export const HandleSearchPostalCodeByLocation = async (req, res) => {
   const { query, page, limit } = req.query;
@@ -115,7 +116,7 @@ export const HandleSearchPostalCodeByLocation = async (req, res) => {
       },
     });
 
-    return res.json({
+    const responseData = {
       pagination: {
         total_page: totalPages,
         has_prev_page: hasPrevPage,
@@ -124,12 +125,14 @@ export const HandleSearchPostalCodeByLocation = async (req, res) => {
         items: {
           count,
           total: totalItems,
-          per_page: itemsPerPage,
+          per_page: itemsInLastPage,
         },
       },
-      query,
+      query_search: query,
       data,
-    });
+    };
+
+    return res.json(sucsessResponse(200, "success", responseData));
   } catch (error) {
     return res.status(500).json({
       message: "internal server error!",
