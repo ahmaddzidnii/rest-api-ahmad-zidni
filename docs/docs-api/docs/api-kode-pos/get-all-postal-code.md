@@ -130,7 +130,9 @@ Default limit: 100 , page: 1
 
 ```json title="400"
 {
-  "message": "Limit tidak boleh kurang dari 50"
+  "status": 400,
+  "message": "Limit tidak boleh kurang dari 50",
+  "data": null
 }
 ```
 
@@ -138,7 +140,9 @@ Default limit: 100 , page: 1
 
 ```json title="400"
 {
-  "message": "Page yang diminta melebihi page pada data pada database!"
+  "status": 400,
+  "message": "Page yang diminta melebihi page pada data pada database!",
+  "data": null
 }
 ```
 
@@ -146,7 +150,9 @@ Default limit: 100 , page: 1
 
 ```json title="500"
 {
-  "message": "Internal server error!"
+  "status": 500,
+  "message": "Internal server error!",
+  "data": null
 }
 ```
 

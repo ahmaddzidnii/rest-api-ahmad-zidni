@@ -50,7 +50,9 @@ Params **(Required)**:
 
 ```json title="404"
 {
-  "message": "lokasi tidak ditemukan"
+  "status": 404,
+  "message": "lokasi tidak ditemukan",
+  "data": null
 }
 ```
 
@@ -58,7 +60,9 @@ Params **(Required)**:
 
 ```json title="500"
 {
-  "message": "Internal server error!"
+  "status": 500,
+  "message": "Internal server error!",
+  "data": null
 }
 ```
 
