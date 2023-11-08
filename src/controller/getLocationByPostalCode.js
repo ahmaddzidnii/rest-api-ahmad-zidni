@@ -1,13 +1,12 @@
 import { prisma } from "../lib/prisma/db.js";
+import { failedResponse } from "../templates/failedResponse.js";
 import { sucsessResponse } from "../templates/succsesResponse.js";
 
 export const HandleGetLocationByPostalCode = async (req, res) => {
   const { postalCode } = req.params;
 
   if (!postalCode) {
-    return res.status(400).json({
-      message: "kode pos tidak boleh kosong!",
-    });
+    return res.status(400).json(failedResponse(400, "kode pos tidak boleh kosong!"));
   }
 
   const postal_code = parseInt(postalCode);
@@ -20,9 +19,7 @@ export const HandleGetLocationByPostalCode = async (req, res) => {
     });
 
     if (!data) {
-      res.status(404).json({
-        message: "lokasi tidak ditemukan",
-      });
+      res.status(404).json(failedResponse(404, "lokasi tidak ditemukan"));
     }
 
     const responseData = {
@@ -32,8 +29,6 @@ export const HandleGetLocationByPostalCode = async (req, res) => {
 
     return res.json(sucsessResponse(200, "success", responseData));
   } catch (error) {
-    return res.status(500).json({
-      message: "internal server error!",
-    });
+    return res.status(500).json(failedResponse(500, " Internal server error!"));
   }
 };

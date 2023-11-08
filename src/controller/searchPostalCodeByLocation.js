@@ -1,12 +1,11 @@
 import { prisma } from "../lib/prisma/db.js";
+import { failedResponse } from "../templates/failedResponse.js";
 import { sucsessResponse } from "../templates/succsesResponse.js";
 
 export const HandleSearchPostalCodeByLocation = async (req, res) => {
   const { query, page, limit } = req.query;
   if (!query) {
-    return res.status(404).json({
-      message: "Data tidak ditemukan!",
-    });
+    return res.status(400).json(failedResponse(400, "query tidak boleh kosong!"));
   }
 
   // Mengubah query params menjadi huruf kecil semua
@@ -18,9 +17,7 @@ export const HandleSearchPostalCodeByLocation = async (req, res) => {
 
   // Validasi limit tidak boleh kurang dari 50
   if (LimitNumber < 50) {
-    return res.status(400).json({
-      message: "Limit tidak boleh kurang dari 50",
-    });
+    return res.status(400).json(failedResponse(400, "Limit tidak boleh kurang dari 50!"));
   }
 
   const currentPage = page ? pageNumber : 1;
@@ -60,11 +57,7 @@ export const HandleSearchPostalCodeByLocation = async (req, res) => {
 
     // Validasi jika tidak ada total items maka akan return 404 not found
     if (!totalItems) {
-      return res.status(404).json({
-        message: "Data tidak ditemukan!",
-        query,
-        data: null,
-      });
+      return res.status(404).json(failedResponse(404, "data tidak ditemukan!"));
     }
 
     // Total halaman
@@ -134,9 +127,7 @@ export const HandleSearchPostalCodeByLocation = async (req, res) => {
 
     return res.json(sucsessResponse(200, "success", responseData));
   } catch (error) {
-    return res.status(500).json({
-      message: "internal server error!",
-    });
+    return res.status(500).json(failedResponse(500, "Internal server error!"));
   } finally {
     await prisma.$disconnect();
   }

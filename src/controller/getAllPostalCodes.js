@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma/db.js";
+import { failedResponse } from "../templates/failedResponse.js";
 import { sucsessResponse } from "../templates/succsesResponse.js";
 
 export const HandleGetAllPostalCodes = async (req, res) => {
@@ -9,9 +10,7 @@ export const HandleGetAllPostalCodes = async (req, res) => {
 
   //   Handle dimana client mengirim limit dibawah 50
   if (itemsPerPage < 50) {
-    return res.status(400).json({
-      message: "Limit tidak boleh kurang dari 50",
-    });
+    return res.status(400).json(failedResponse(400, "Limit tidak boleh kurang dari 50"));
   }
 
   try {
@@ -27,16 +26,7 @@ export const HandleGetAllPostalCodes = async (req, res) => {
 
     // Mengecek jika page yang dikirim client lebih dari yang ada di data base
     if (page > totalPages) {
-      return res.status(400).json({
-        message: "Page yang diminta melebihi page pada data pada database!",
-      });
-    }
-
-    //   Handle dimana saat client mengirim curent page lebih dari page size
-    if (currentPage > totalPages) {
-      return res.status(400).json({
-        message: "Current page tidak boleh lebih dari page size!",
-      });
+      return res.status(400).json(failedResponse(400, "Page yang diminta melebihi page pada data pada database!"));
     }
 
     // Menghitung indeks mulai dan selesai untuk data pada halaman saat ini
@@ -71,9 +61,7 @@ export const HandleGetAllPostalCodes = async (req, res) => {
     return res.json(sucsessResponse(200, "Get all postal code success!", responseData));
   } catch (error) {
     // Handle server error
-    return res.status(500).json({
-      message: "Internal server error!",
-    });
+    return res.status(500).json(failedResponse(500, "Internal server error!"));
   } finally {
     //   Menutup koneksi ke database
     await prisma.$disconnect();
