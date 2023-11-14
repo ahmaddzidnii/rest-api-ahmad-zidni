@@ -8,7 +8,16 @@ const getAllPostallCodes = async (req, res, next) => {
     next(error);
   }
 };
+const getLocationByPostalCode = async (req, res, next) => {
+  try {
+    const data = await postalcodeService.getLocationByPostalCode(req);
+    return res.status(200).json(successResponse(200, "success", data));
+  } catch (error) {
+    next(error);
+  }
+};
 
 export default {
   getAllPostallCodes,
+  getLocationByPostalCode,
 };

@@ -57,9 +57,32 @@ const getAllPostallCodes = async (req) => {
   return responseData;
 };
 
+const getLocationByPostalCode = async (req) => {
+  const { postalCode } = req.params;
+  if (!postalCode) {
+    throw new ResponseErorr(400, "kode pos tidak boleh kosong!");
+  }
+  const postal_code = parseInt(postalCode);
 
-const getLocationByPostalCode = async (req) =>{}
+  const [data] = await prisma.postalcodeall.findMany({
+    where: {
+      postal_code,
+    },
+  });
+
+  if (!data) {
+    throw new ResponseErorr(404, "lokasi tidak ditemukan");
+  }
+
+  const responseData = {
+    postal_code_query: postalCode,
+    data,
+  };
+
+  return responseData;
+};
 
 export default {
   getAllPostallCodes,
+  getLocationByPostalCode,
 };
