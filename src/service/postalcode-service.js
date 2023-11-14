@@ -1,5 +1,5 @@
 import { prisma } from "../../lib/prisma/db.js";
-import { ResponseErorr } from "../errors/response-error.js";
+import { ResponseErorr } from "../response/response-error.js";
 
 const getAllPostallCodes = async (req) => {
   const { page, limit } = req.query;
@@ -56,6 +56,9 @@ const getAllPostallCodes = async (req) => {
   };
   return responseData;
 };
+
+
+const getLocationByPostalCode = async (req) =>{}
 
 export default {
   getAllPostallCodes,
