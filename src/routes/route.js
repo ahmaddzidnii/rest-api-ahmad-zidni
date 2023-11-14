@@ -1,7 +1,5 @@
 import express from "express";
 
-import { HandleSearchPostalCodeByLocation } from "../controller/searchPostalCodeByLocation.js";
-
 import postalcodeController from "../controller/postalcode-controller.js";
 
 const router = express.Router();
@@ -15,6 +13,6 @@ router.get("/postalcodes", postalcodeController.getAllPostallCodes);
 
 router.get("/postalcode/:postalCode", postalcodeController.getLocationByPostalCode);
 
-router.get("/postalcodes/search", HandleSearchPostalCodeByLocation);
+router.get("/postalcodes/search", postalcodeController.searchPostalCodeByLocation);
 
 export default router;
