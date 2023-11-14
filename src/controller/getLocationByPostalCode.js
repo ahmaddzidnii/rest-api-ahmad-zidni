@@ -1,4 +1,4 @@
-import { prisma } from "../lib/prisma/db.js";
+import { prisma } from "../../lib/prisma/db.js";
 import { failedResponse } from "../templates/failedResponse.js";
 import { sucsessResponse } from "../templates/succsesResponse.js";
 
