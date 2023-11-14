@@ -2,10 +2,10 @@
   "name": "rest-api-express",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/app/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
+    "dev": "nodemon ./src/app/index.js",
     "test": "jest -i"
   },
   "author": "Ahmad Zidni Hidayat",
