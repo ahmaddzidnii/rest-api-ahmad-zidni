@@ -18,15 +18,15 @@ const app = express();
 // izinkan cors untuk domain yang berbeda
 app.use(cors());
 
+// izinkan request berbentuk json
+app.use(express.json());
+
 app.use(loggerMiddleware);
 
 // Buat router endpoint REST API
 app.use(router);
 
 app.use(errorMiddleware);
-
-// izinkan request berbentuk json
-app.use(express.json());
 
 // buat server di expess js
 app.listen(port, () => {
