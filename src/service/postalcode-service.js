@@ -12,7 +12,7 @@ const getAllPostallCodes = async (req) => {
     throw new ResponseErorr(400, "Limit tidak boleh kurang dari 50");
   }
   // Menghitung jumlah total data
-  const totalItems = await prisma.postalcodeall.count();
+  const totalItems = await prisma.postalcode.count();
 
   // Menghitung jumlah halaman
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -30,7 +30,7 @@ const getAllPostallCodes = async (req) => {
   const startIndex = (currentPage - 1) * itemsPerPage;
 
   // Mengambil data dalam jumlah tertentu
-  const data = await prisma.postalcodeall.findMany({
+  const data = await prisma.postalcode.findMany({
     skip: startIndex,
     take: itemsPerPage,
   });
@@ -64,7 +64,7 @@ const getLocationByPostalCode = async (req) => {
   }
   const postal_code = parseInt(postalCode);
 
-  const [data] = await prisma.postalcodeall.findMany({
+  const [data] = await prisma.postalcode.findMany({
     where: {
       postal_code,
     },
@@ -103,7 +103,7 @@ const searchPostalCodeByLocation = async (req) => {
   const currentPage = page ? pageNumber : 1;
   const itemsPerPage = limit ? LimitNumber : 100;
 
-  const totalItems = await prisma.postalcodeall.count({
+  const totalItems = await prisma.postalcode.count({
     where: {
       OR: [
         {
@@ -142,8 +142,8 @@ const searchPostalCodeByLocation = async (req) => {
   // Total halaman
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-   // Mengecek jika page yang dikirim client lebih dari yang ada di data base
-   if (page > totalPages) {
+  // Mengecek jika page yang dikirim client lebih dari yang ada di data base
+  if (page > totalPages) {
     throw new ResponseErorr(400, "Page yang diminta melebihi page pada data pada database!");
   }
 
@@ -160,7 +160,7 @@ const searchPostalCodeByLocation = async (req) => {
   // Kondisi dimana tidak memiliki halaman sebelumnya
   const hasPrevPage = currentPage === 1 ? false : true;
 
-  const data = await prisma.postalcodeall.findMany({
+  const data = await prisma.postalcode.findMany({
     skip: skip,
     take: itemsPerPage,
     where: {
