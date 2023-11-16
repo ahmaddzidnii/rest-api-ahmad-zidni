@@ -17,3 +17,20 @@ model postalcode {
   postal_code Int?
   id          Int     @id @default(autoincrement())
 }
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model asmaul_husna {
+  id         Int    @id
+  text_latin String
+  text_arab  String
+  text_arti  String
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model doa_sehari_hari {
+  title       String?
+  arabic      String?
+  latin       String?
+  translation String?
+  id          Int     @id @default(autoincrement())
+}
