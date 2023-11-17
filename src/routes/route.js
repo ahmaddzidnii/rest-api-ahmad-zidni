@@ -2,6 +2,7 @@ import express from "express";
 
 import postalcodeController from "../controller/postalcode-controller.js";
 import asmaulHusnaController from "../controller/asmaul-husna-controller.js";
+import doaHarianController from "../controller/doa-harian-controller.js";
 import apiController from "../controller/api-controller.js";
 
 const router = express.Router();
@@ -20,6 +21,9 @@ router.get("/postalcodes/search", postalcodeController.searchPostalCodeByLocatio
 // Endpoint untuk API Asmaul Husna
 router.get("/asmaulhusna", asmaulHusnaController.getAllAsmaulHusna);
 router.get("/asmaulhusna/:id", asmaulHusnaController.getAllAsmaulHusnaById);
+
+// Endpoint untuk API doa harian
+router.get("/doaharian", doaHarianController.getAllDoaHarian);
 
 router.use(apiController.routeNotFound);
 
