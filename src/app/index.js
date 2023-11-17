@@ -5,6 +5,7 @@ import router from "../routes/route.js";
 import { errorMiddleware } from "../middleware/error-middleware.js";
 import { logger } from "../../lib/winston/logging.js";
 import { loggerMiddleware } from "../middleware/logger.js";
+import { limiter } from "../middleware/rate-limiter.js";
 
 // Inisialisasi library dotenv untuk membaca file .env sebaga environment kita
 dotenv.config();
@@ -20,6 +21,8 @@ app.use(cors());
 
 // izinkan request berbentuk json
 app.use(express.json());
+
+app.use(limiter);
 
 app.use(loggerMiddleware);
 
