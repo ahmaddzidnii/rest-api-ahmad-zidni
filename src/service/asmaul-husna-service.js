@@ -2,17 +2,29 @@ import { prisma } from "../../lib/prisma/db.js";
 import { ResponseErorr } from "../response/response-error.js";
 
 const getAllAsmaulHusna = async (req) => {
-  let { order } = req.query;
+  let { order, filter } = req.query;
 
   if (order !== "asc" && order !== "desc") {
-    order = "asc";
+    order = undefined;
   }
-  const data = await prisma.asmaul_husna.findMany({
+  let data = await prisma.asmaul_husna.findMany({
     orderBy: {
-      id: order === "asc" ? "asc" : "desc",
+      id: order,
     },
   });
+
+  if (filter !== "even" && filter !== "odd") {
+    filter = undefined;
+  }
+
+  if (filter === "even") {
+    data = data.filter((item) => item.id % 2 === 0);
+  } else if (filter === "odd") {
+    data = data.filter((item) => item.id % 2 === 1);
+  }
+
   const responseData = {
+    filter,
     order,
     data,
   };
@@ -36,9 +48,9 @@ const getAllAsmaulHusnaById = async (req) => {
     },
   });
 
-  const beforeAsmaulHusna = await prisma.asmaul_husna.findUnique({
+  const adjacentData = await prisma.asmaul_husna.findMany({
     where: {
-      id: parseInt(id) - 1,
+      OR: [{ id: parseInt(id) - 1 }, { id: parseInt(id) + 1 }],
     },
     select: {
       id: true,
@@ -46,20 +58,13 @@ const getAllAsmaulHusnaById = async (req) => {
     },
   });
 
-  const nextAsmaulHusna = await prisma.asmaul_husna.findUnique({
-    where: {
-      id: parseInt(id) + 1,
-    },
-    select: {
-      id: true,
-      text_latin: true,
-    },
-  });
+  const beforeData = adjacentData.find((item) => item.id === parseInt(id) - 1);
+  const afterData = adjacentData.find((item) => item.id === parseInt(id) + 1);
 
   const responseData = {
     pagination: {
-      prev_asmaul_husna: !beforeAsmaulHusna ? false : beforeAsmaulHusna,
-      next_asmaul_husna: !nextAsmaulHusna ? false : nextAsmaulHusna,
+      prev_asmaul_husna: !beforeData ? false : beforeData,
+      next_asmaul_husna: !afterData ? false : afterData,
     },
     data,
   };
