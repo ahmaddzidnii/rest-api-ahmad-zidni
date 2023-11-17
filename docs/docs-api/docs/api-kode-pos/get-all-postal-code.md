@@ -7,7 +7,7 @@ sidebar_position: 1
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
-  https://api.ahmadzidni.site/postalcodes
+  https://api.ahmadzidni.site/postal-codes
 ```
 
 ## Params
@@ -24,7 +24,7 @@ Default limit: 100 , page: 1
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcodes
+ api.ahmadzidni.site/postal-codes
 ```
 
 ## Example Response

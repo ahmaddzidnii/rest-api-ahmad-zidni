@@ -7,7 +7,7 @@ sidebar_position: 2
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- api.ahmadzidni.site/postalcode/{kode-pos}
+ api.ahmadzidni.site/postal-code/{kode-pos}
 ```
 
 ## Params
@@ -19,7 +19,7 @@ Params **(Required)**:
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcode/55282
+ api.ahmadzidni.site/postal-code/55282
 
 ```
 

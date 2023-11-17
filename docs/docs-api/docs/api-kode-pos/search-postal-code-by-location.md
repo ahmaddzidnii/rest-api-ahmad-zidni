@@ -7,7 +7,7 @@ sidebar_position: 3
 **HTTP METHOD : GET**
 
 ```txt title="endpoint"
- api.ahmadzidni.site/postalcodes/search
+ api.ahmadzidni.site/postal-codes/search
 ```
 
 ## Params
@@ -28,7 +28,7 @@ Default limit: 100 , page: 1
 ## Example Request
 
 ```txt title="GET"
- api.ahmadzidni.site/postalcodes/search?query=yogyakarta
+ api.ahmadzidni.site/postal-codes/search?query=yogyakarta
 ```
 
 ## Example Response
