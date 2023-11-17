@@ -24,6 +24,7 @@ router.get("/asmaul-husna/:id", asmaulHusnaController.getAllAsmaulHusnaById);
 
 // Endpoint untuk API doa harian
 router.get("/doa-harian", doaHarianController.getAllDoaHarian);
+router.get("/doa-harian/:id", doaHarianController.getDoaHarianById);
 
 router.use(apiController.routeNotFound);
 

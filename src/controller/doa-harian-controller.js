@@ -9,6 +9,16 @@ const getAllDoaHarian = async (req, res, next) => {
   }
 };
 
+const getDoaHarianById = async (req, res, next) => {
+  try {
+    const data = await doaHarianService.getDoaHarianById(req);
+    return res.status(200).json(successResponse(200, "success", data));
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   getAllDoaHarian,
+  getDoaHarianById,
 };
